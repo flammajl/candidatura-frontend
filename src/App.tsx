@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { Column } from 'react-table';
 import styles from './style/App.module.css';
 import api from './services/api';
-import TableT from './Table';
+import Table from './components/Table';
 import Logo from './assets/qquant.png';
 
 export interface DataProps {
@@ -59,7 +59,7 @@ const App: React.FC = () => {
           <h1>Qquant Revisões Sistemáticas</h1>
         </header>
       </div>
-      {data && <TableT columns={columns} data={data} />}
+      {data && <Table columns={columns} data={data} />}
     </section>
   );
 };

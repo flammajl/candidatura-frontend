@@ -7,10 +7,10 @@ import {
   usePagination,
   Row,
 } from 'react-table';
-import { DataProps } from './App';
-import GlobalFilter from './components/GlobalFilter';
-import Modal, { ModalHandles } from './components/Modal';
-import styles from './style/Table.module.css';
+import { DataProps } from '../App';
+import GlobalFilter from './GlobalFilter';
+import Modal, { ModalHandles } from './Modal';
+import styles from '../style/Table.module.css';
 
 interface TableProps {
   data: DataProps[];
