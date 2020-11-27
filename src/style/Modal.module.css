@@ -1,0 +1,71 @@
+.modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0,0,0,0.5);
+}
+
+.modalContent {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 800px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 30%;
+  z-index: 2;
+  background: #fff;
+  border-radius: 3px;
+  padding: 10px;
+  transition: all 0.3s ease-in-out;
+}
+
+.content{
+  position: relative;
+}
+
+.book {
+  width: 200px;
+  height: 200px;
+  margin-left: 3rem;
+}
+
+.close {
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  right: 10px;
+  top: 15px;
+  cursor: pointer;
+}
+
+.modal h1 {
+  padding-top: 18px;
+}
+
+.modal h2 {
+  grid-column: 1 / -1;
+}
+
+.modal span {
+  display: block;
+}
+.modal span + span {
+  margin-top: 16px;
+}
+
+.modal form {
+  margin-top: 2rem;
+  grid-column: 1 / -1;
+
+}
+
+.modal textarea {
+  width: 100%;
+}
+
+.modal p {
+  display: block;
+}

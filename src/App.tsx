@@ -1,14 +1,9 @@
-import React, {
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { Column } from 'react-table';
 import styles from './style/App.module.css';
 import api from './services/api';
 import TableT from './Table';
+import Logo from './assets/qquant.png';
 
 export interface DataProps {
   _id: string;
@@ -16,11 +11,11 @@ export interface DataProps {
   year: string;
   doi: string;
   author: string;
+  FIELD6: string[];
 }
 
 const App: React.FC = () => {
-  const inputRef = useRef<HTMLInputElement>(null);
-  const [data, setData] = useState<DataProps[]>([]);
+  const [apiData, setApiData] = useState<DataProps[]>([]);
 
   const columns = useMemo<Column<DataProps>[]>(
     () => [
@@ -44,36 +39,26 @@ const App: React.FC = () => {
     [],
   );
 
-  const handleChange = useCallback(() => {
-    if (inputRef.current?.value) {
-      // const reg = new RegExp(inputRef.current?.value, 'i');
-      console.log('a');
-    }
-  }, []);
+  const data = useMemo(() => apiData, [apiData]);
 
   useEffect(() => {
     const fetchData = async () => {
       const response = await api.get(
         'qquant-group/candidatura-frontend/main/data.json',
       );
-      setData(response.data);
+      setApiData(response.data);
     };
     fetchData();
   }, []);
 
   return (
     <section className={styles.container}>
-      <div className={styles.filter}>
-        <label htmlFor="filter">Filter</label>
-        <input
-          ref={inputRef}
-          type="text"
-          id="filter"
-          name="filter"
-          onChange={handleChange}
-        />
+      <div>
+        <header>
+          <img src={Logo} alt="Qquant" />
+          <h1>Qquant Revisões Sistemáticas</h1>
+        </header>
       </div>
-
       {data && <TableT columns={columns} data={data} />}
     </section>
   );

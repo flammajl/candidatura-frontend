@@ -1,0 +1,15 @@
+.filter {
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  width: 65%;
+}
+
+.filter input {
+  flex: 1;
+  border-radius: 5px 0 0 5px;
+  height: 35px;
+  padding: 0 0.5rem;
+  font-weight: 300;
+}
