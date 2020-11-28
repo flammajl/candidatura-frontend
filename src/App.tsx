@@ -43,10 +43,25 @@ const App: React.FC = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await api.get(
+      const response = await api.get<DataProps[]>(
         'qquant-group/candidatura-frontend/main/data.json',
       );
-      setApiData(response.data);
+      const newData: DataProps[] = response.data.map(dt => {
+        const newTitle = dt.title.replace(/[{},]/g, '');
+        const newYear = dt.year.replace(/[{},]/g, '');
+        const newDoi = dt.doi.replace(/[{},]/g, '');
+        const newAuthor = dt.author.replace(/[{},]/g, '');
+        const newArr: DataProps = {
+          _id: dt._id,
+          title: newTitle,
+          year: newYear,
+          doi: newDoi,
+          author: newAuthor,
+          FIELD6: dt.FIELD6,
+        };
+        return newArr;
+      });
+      setApiData(newData);
     };
     fetchData();
   }, []);
